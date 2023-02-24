@@ -10,15 +10,37 @@ namespace SportsBet.Models
     {
         public int number;
         public string name;
-        public string position;
+        public PositionEnum position;
+        public int depth;
 
+        // addPlayerToDepthChart(“QB”, TomBrady, 0);
         //addPlayerToDepthChart (position, player, position_depth)
+       ///public enum PositionEnum { QB, HB, WR, TE, LT, LG, C, RG, RT, DE, DT, OLB, MLB, CB, FS, SS }
+        public enum PositionEnum { LWR, RWR, SWR, LT, LG, C, RG, RT, TE, QB, RB, DE, NT, DT, LO, LI, RI, RO, LC, SS, FS, RC, NB, PT, PK, LS, H, KO, PR, KR }
 
-    
-        
-        
-        
+        public string Name { get; set; }
+        public int Depth { get; set; }
+        //public TypeEnum Type { get; set; }
+        public Player(int n, string s)
+        {
+            number = n;
+            name = s;
         }
+
+        public Player(string s)
+        {
+
+            name = s;
+        }
+ 
+
+
+
+
+
+
+
     }
 }
+ 
         
