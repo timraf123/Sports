@@ -32,7 +32,13 @@ namespace SportsBet.Models
 
             name = s;
         }
- 
+        public Player(int n, string s, PositionEnum p, int d)
+        {
+            number = n;
+            name = s;
+            position = p;
+            depth = d;
+        }
 
 
 

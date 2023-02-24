@@ -169,7 +169,7 @@ namespace SportsBet.Models
         public void removePlayerFromDepthChart(PositionEnum position, Player player)
         {
             List<Player> players = TeamDepthChart[position];
-            var item = players.SingleOrDefault(x => x.name == player.name);
+            var item = players.SingleOrDefault(x => x.number== player.number);
             if (item != null)
             {
                 bool b = players.Remove(item);

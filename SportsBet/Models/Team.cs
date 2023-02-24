@@ -23,19 +23,18 @@ namespace SportsBet.Models
             Console.WriteLine(teamname);
             depthChart.LoadDepthChart();
             depthChart.getFullDepthChart();
-            //  Player pnewPlayer = new Player(51, "Dan Marino", Player.PositionEnum.LG, 3);
-            depthChart.getlDepthChartForPosition(Player.PositionEnum.LG);
-            Player pnewPlayer = new Player(51, "Dan Marino");
+          //  depthChart.getlDepthChartForPosition(Player.PositionEnum.LG);
+            Player pnewPlayer = new Player(52, "Dan Marino");
             //Console.ReadLine();
             depthChart.addPlayerToDepthChart(Player.PositionEnum.LG,  pnewPlayer, 2);
             depthChart.getlDepthChartForPosition(Player.PositionEnum.LG);
            // depthChart.getFullDepthChart();
-            Player pRemove = new Player(51, "Dan Marino");
+            Player pRemove = new Player(52, "Dan Marino");
             depthChart.removePlayerFromDepthChart(Player.PositionEnum.LG, pRemove);
 
             depthChart.getBackups(Player.PositionEnum.LG, pRemove);
             depthChart.getlDepthChartForPosition(Player.PositionEnum.LG);
-           // depthChart.getFullDepthChart();
+         //   depthChart.getFullDepthChart();
             Console.ReadLine();
         }
 
