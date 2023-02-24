@@ -1,4 +1,5 @@
 ﻿
+using SportsBet.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,9 @@ namespace SportsBet
     {
         static void Main(string[] args)
         {
+
+            Team team = new Team("Tampa Bay Buccaneers");
+            team.Test();   
         }
     }
 }
