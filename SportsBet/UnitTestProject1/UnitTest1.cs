@@ -25,5 +25,25 @@ namespace UnitTestProject1
             Assert.AreEqual(players.Count, 0);
 
         }
+        [TestMethod]
+        public void TestMethod2() 
+        {
+            Sports nba = new Sports("NBA");
+            nba.addTeam(new Team("Los Angeles"));
+             Team t = nba.getTeam("Los Angeles");
+            Assert.IsNotNull(t.depthChart);
+            t.depthChart.getFullDepthChart();
+            Player playerToRemove = new Player(33, "Dan Smith");
+            List<Player> players =  t.depthChart.removePlayerFromDepthChart(Player.PositionEnum.LG, playerToRemove);
+            Assert.AreEqual(players.Count, 0);
+
+            Player pnewPlayer = new Player(52, "Dan Marino");
+            int depth = 2;
+            int playerDepth = t.depthChart.addPlayerToDepthChart(Player.PositionEnum.LG, pnewPlayer, depth);
+            Assert.AreEqual(depth, playerDepth);
+
+            System.Diagnostics.Trace.WriteLine("TESTING" + t.teamname);
+        }
+
     }
 }
