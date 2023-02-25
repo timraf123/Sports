@@ -12,21 +12,32 @@ namespace SportsBet
     {
         static void Main(string[] args)
         {
-            // AAdding all the NFL teams?
-    
-            List<Team> Teams = new List<Team>();
-            // Add more sports
-
+            // Adding all the NFL teams?
+            Sports sport = new Sports("NFL");
+            sport.addTeam(new Team("Tampa Bay Buccaneers"));
             //Team team = new Team("Tampa Bay Buccaneers");
-            Teams.Add(new Team("Tampa Bay Buccaneers"));
-            Teams.Add(new Team("Chicago Bears"));
-            Teams.Add(new Team("New York Giants"));
+            sport.addTeam(new Team("Chicago Bears"));
+            sport.addTeam(new Team("New York Giants"));
 
-            foreach (Team team in Teams)
+     
+            foreach (Team team in sport.teams)
             {
                 Console.WriteLine(team.teamname);
-                team.Test();
+               team.Test();
             }
+
+            Sports nba = new Sports("NBA");
+            nba.addTeam(new Team("Los Angeles Lakers"));
+            nba.addTeam(new Team("Chicago Bulls"));
+            nba.addTeam(new Team("Miami Heat"));
+            foreach (Team team in nba.teams)
+            {
+                Console.WriteLine(team.teamname);
+                //team.Test();
+            }
+
+            Team t = nba.getTeam("Los Angeles Lakers");
+            t.Test();
         }
     }
 }
