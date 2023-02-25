@@ -18,10 +18,14 @@ namespace SportsBet.Models
         public void addPlayerToDepthChart(string position, Player player, int position_depth)
         {
         }
+        public void load()
+        {
+            depthChart.LoadDepthChart();
+        }
         public void Test()
         {
             Console.WriteLine(teamname);
-            depthChart.LoadDepthChart();
+          //  depthChart.LoadDepthChart();
             depthChart.getFullDepthChart();
           //  depthChart.getlDepthChartForPosition(Player.PositionEnum.LG);
             Player pnewPlayer = new Player(52, "Dan Marino");
@@ -35,7 +39,7 @@ namespace SportsBet.Models
             players = depthChart.removePlayerFromDepthChart(Player.PositionEnum.LG, playerToRemove);
             depthChart.getDepthChartForPosition(Player.PositionEnum.LG);
       
-            Console.ReadLine();
+           // Console.ReadLine();
         }
 
     }
