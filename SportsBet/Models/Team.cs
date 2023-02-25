@@ -25,19 +25,20 @@ namespace SportsBet.Models
             depthChart.getFullDepthChart();
           //  depthChart.getlDepthChartForPosition(Player.PositionEnum.LG);
             Player pnewPlayer = new Player(52, "Dan Marino");
-            //Console.ReadLine();
-            depthChart.addPlayerToDepthChart(Player.PositionEnum.LG,  pnewPlayer, 2);
-            depthChart.getlDepthChartForPosition(Player.PositionEnum.LG);
+            int posn = depthChart.addPlayerToDepthChart(Player.PositionEnum.LG,  pnewPlayer, 2);
+            depthChart.getDepthChartForPosition(Player.PositionEnum.LG);
            // depthChart.getFullDepthChart();
             Player pRemove = new Player(52, "Dan Marino");
-            depthChart.removePlayerFromDepthChart(Player.PositionEnum.LG, pRemove);
-
-            depthChart.getBackups(Player.PositionEnum.LG, pRemove);
-            depthChart.getlDepthChartForPosition(Player.PositionEnum.LG);
-         //   depthChart.getFullDepthChart();
+            List<Player> backups =  depthChart.getBackups(Player.PositionEnum.LG, pRemove);
+            List<Player> players = depthChart.removePlayerFromDepthChart(Player.PositionEnum.LG, pRemove);
+            Player playerToRemove = new Player(33, "Dan Smith");
+            players = depthChart.removePlayerFromDepthChart(Player.PositionEnum.LG, playerToRemove);
+            depthChart.getDepthChartForPosition(Player.PositionEnum.LG);
+      
             Console.ReadLine();
         }
 
     }
 
 }
+   

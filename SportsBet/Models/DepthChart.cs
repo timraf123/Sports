@@ -31,19 +31,12 @@ namespace SportsBet.Models
      
         public DepthChart()
         {
-           // Players = new List<Player>();
         
-
-
         }
-
-        //public result = new List<Player>[Enum.GetValues(typeof(Constants.PlayerPosition)).Length];
-        // addPlayerToDepthChart(“QB”, TomBrady, 0);
 
         public void AddPlayer(Player p, List<Player> list)
         {
             list.Add(p);
-           // Players.Add(p);
         }
 
         //public void LoadCharts()
@@ -63,36 +56,10 @@ namespace SportsBet.Models
 
             foreach (PositionEnum i in Enum.GetValues(typeof(PositionEnum)))
             {
-                //Console.WriteLine($" {i}");
                 List<Player> players = new List<Player>();
                 LoadPlayers(players);
-                //  newDict2.Add(i, players);
                 TeamDepthChart.Add(i, players);
             }
-
-            //Console.ReadLine();
-
-            //  Player pRemove  = new Player("TOM Brady");
-            //  Player pbackups = new Player("TOM Brady");
-            ////  Player pnewPlayer = new Player("TOM Brady");
-            //  Player pnewPlayer = new Player(51, "TOM Hanks", Player.PositionEnum.LG, 3); 
-            //  //removePlayerFromDepthChart(Player.PositionEnum.QB, pRemove);
-            //  getBackups(Player.PositionEnum.LG, pbackups);
-            //  addPlayerToDepthChart(Player.PositionEnum.LG, pnewPlayer,3);
-            //  Console.WriteLine(" INSERTED");
-            //  List<Player> pl =  (List<Player>)Players.OrderBy(x => x.position).ToList();
-            //  foreach (Player p in pl)
-            //  {
-            //      Console.Write(p.name + " ");
-            //      Console.Write(p.number + " ");
-            //      Console.Write(p.position + " ");
-            //      Console.Write(p.depth + " ");
-            //      Console.WriteLine("");
-
-
-            //  }
-            //Console.ReadLine();
-
         }
         public void LoadPlayers(List<Player> list)
         {
@@ -116,15 +83,31 @@ namespace SportsBet.Models
         /// <param name="position"></param>
         /// <param name="player"></param>
         /// <param name="position_depth"></param>
-        public void addPlayerToDepthChart(PositionEnum position, Player player, int position_depth)
+        public int addPlayerToDepthChart(PositionEnum position, Player player, int? position_depth)
         {
             // get players for position
- 
+
             List<Player> players = TeamDepthChart[position];
-            players.Insert(position_depth, player);
+            if (position_depth == null || position_depth == 0)
+            {
+                players.Add(player);
+            }
+            else
+            {
+                players.Insert((int)position_depth, player);
+           
+            }
+            return getPlayerDepth(players, player);
         }
 
 
+
+
+        public int getPlayerDepth(List<Player> players, Player player)
+        {
+            return players.FindIndex(a => a.number == player.number);
+     
+        }
         /// <summary>
         /// o Print out the full depth chart with every position on the team and every player within the Depth Chart
         /// </summary>
@@ -150,7 +133,7 @@ namespace SportsBet.Models
         /// <summary>
         /// o Print out the full depth chart with every position on the team and every player within the Depth Chart
         /// </summary>
-        public void getlDepthChartForPosition(PositionEnum position)
+        public void getDepthChartForPosition(PositionEnum position)
         {
 
             Console.WriteLine("DEPTH CHART For Position " + position);
@@ -166,15 +149,20 @@ namespace SportsBet.Models
         /// </summary>
         /// <param name="position"></param>
         /// <param name="player"></param>
-        public void removePlayerFromDepthChart(PositionEnum position, Player player)
+        public List<Player> removePlayerFromDepthChart(PositionEnum position, Player player)
         {
             List<Player> players = TeamDepthChart[position];
-            var item = players.SingleOrDefault(x => x.number== player.number);
+            List<Player> returnPlayers = new List<Player>();
+            Player item = players.SingleOrDefault(x => x.number== player.number);
             if (item != null)
             {
+                returnPlayers.Add(item);
                 bool b = players.Remove(item);
             }
+
+            return returnPlayers;
         }
+
 
         /// <summary>
         /// o For a given player and position, we want to see all players that are “Backups”, those with a lower position_depth
